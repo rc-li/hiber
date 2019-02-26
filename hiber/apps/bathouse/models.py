@@ -1,7 +1,8 @@
 from django import forms
-from django.db import models
 from django.contrib.postgres.fields import (ArrayField, FloatRangeField,
                                             IntegerRangeField)
+from django.db import models
+from django.utils.encoding import force_text
 from wagtail.admin.edit_handlers import (MultiFieldPanel, FieldRowPanel,
                                          FieldPanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -117,3 +118,27 @@ class Bat(models.Model):
 
     def __str__(self):
         return f"{self.common_name} ({self.scientific_name})"
+
+    def get_habits_display(self):
+        values = self.habits
+        return [
+            force_text(
+                dict(Bat.HABIT_CHOICES).get(value, value), strings_only=True)
+            for value in values
+        ]
+
+    def get_risk_display(self):
+        values = self.risk
+        return [
+            force_text(
+                dict(Bat.RISK_CHOICES).get(value, value), strings_only=True)
+            for value in values
+        ]
+
+    def get_risk_scope_display(self):
+        values = self.risk_scope
+        return [
+            force_text(
+                dict(Bat.SCOPE_CHOICES).get(value, value), strings_only=True)
+            for value in values
+        ]

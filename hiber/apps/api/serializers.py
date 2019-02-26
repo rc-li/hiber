@@ -8,11 +8,13 @@ from ..bathouse.models import Bat
 class BatSerializer(serializers.HyperlinkedModelSerializer):
     # TODO: Get base image exposed over API as well
     #       Get current image to display an absolute path over API
-    #       Properly serialize other fields (habits, risk, risk_scope)
-    bat_image = ImageRenditionField('fill-200x200')
     rarity = serializers.CharField(source='get_rarity_display')
+    habits = serializers.ListField(source='get_habits_display')
     size = FloatRangeField()
     pups = IntegerRangeField()
+    risk = serializers.ListField(source='get_risk_display')
+    risk_scope = serializers.ListField(source='get_risk_scope_display')
+    bat_image = ImageRenditionField('fill-200x200')
 
     class Meta:
         model = Bat

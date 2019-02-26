@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wagtail.contrib.modeladmin',
-]
+    'rest_framework'
+]  # yapf: disable
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',

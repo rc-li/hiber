@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models  # noqa
 
 class House(models.Model):
     watcher_first_name = models.CharField(max_length=50)

@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from rest_framework import permissions
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework import viewsets

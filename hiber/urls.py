@@ -7,14 +7,14 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from hiber.apps.search import views as search_views
-from hiber.apps.api import views as api_views
+from hiber.apps.api import urls as api_urls
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
-    url(r'^api/v1/', api_views.endpoint),
+    url(r'^api/v1/', include(api_urls)),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
